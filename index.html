@@ -9,6 +9,7 @@
     <!-- Bootstrap -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -64,32 +65,28 @@
 </head>
 
 <body>
-    <a href="#" data-target="slide-out" class="sidenav-trigger btn">hamb</a>
+    <a href="#" data-target="slide-out" class="sidenav-trigger btn"><i class="material-icons">menu</i></a>
 
     <nav>
 
     </nav>
 
     <ul id="slide-out" class="sidenav">
+        <ul id="slide-out" class="sidenav">
+            <li><a class="sidenav-close" href="#!">Clicking this will close Sidenav</a></li>
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">close</i></a>
+
         <li>
             <div class="user-view">
                 <div class="background">
-                    <img src="images/office.jpg">
-                </div>
-                <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-                <a href="#name"><span class="white-text name">John Doe</span></a>
-                <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-            </div>
-        </li>
-        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-        <li><a href="#!">Second Link</a></li>
-        <li>
-            <div class="divider"></div>
-        </li>
-        <li><a class="subheader">Subheader</a></li>
-        <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        <li><a href="#!">First</a></li>
+        <li><a href="#!">Second</a></li>
+        <li><a href="#!">Third</a></li>
+        <li><a href="#!">Fourth</a></li>
     </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
 
     <div id='map'></div>
 
@@ -153,14 +150,25 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems, {});
+        document.addEventListener("DOMContentLoaded", function () {
+            var elems = document.querySelectorAll(".sidenav");
+            var options = {};
+            var instances = M.Sidenav.init(elems, options);
 
+            document
+                .querySelector("#toggle_sidenav")
+                .addEventListener("click", function () {
+                    var elem = document.querySelector(".sidenav");
+                    var instance = M.Sidenav.getInstance(elem);
 
-            // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-            var collapsibleElem = document.querySelector('.collapsible');
-            var collapsibleInstance = M.Collapsible.init(collapsibleElem, {});
+                    if (instance.isOpen) {
+                        console.log("Is open: I need to close it");
+                        instance.close();
+                    } else {
+                        console.log("Is closed: I need to open it");
+                        instance.open();
+                    }
+                });
         });
     </script>
 </body>
