@@ -1,15 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
-  <title>Home Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+  <!-- Mapbox -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+  <title>Project 2 </title>
 </head>
 
 <body>
-  {{{body}}}
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Jön</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="mapbox">
+    <div id='map' style='width: 800px; height: 800px;'></div>
+    <script>
+      mapboxgl.accessToken =
+        'pk.eyJ1IjoiZnh0emhvdSIsImEiOiJjazEwMTJncDgwMHp1M3BtdjkxZ3FicDY2In0.8rLpErDOJ5DGEOsiybn8Og';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11'
+      });
+    </script>
+
+  </div>
+  {{body}}
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Project 2</h5>
+          <p class="grey-text text-lighten-4">Fiona waz here</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Libraries/APIs</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="https://refugerestrooms.org/">Refuge Restrooms</a>
+            </li>
+            <li><a class="grey-text text-lighten-3" href="#!">Mapbox</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Open Map</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2019 Fiona Zhou
+        <a class="grey-text text-lighten-4 right" href="https://github.com/fxtzhou/project-2/">Github</a>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

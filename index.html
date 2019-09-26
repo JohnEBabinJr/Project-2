@@ -18,6 +18,9 @@
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Mapbox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
     <title>Project 2 </title>
 </head>
 
@@ -38,6 +41,7 @@
         <div class="row mt-4">
 
             <div class="col col-4 p-3 shadow-sm">
+
                 <div class="">
                     <h1 class="display-4">Bathroom Details</h1>
                     <p class="lead">here's all the info about this bathroom (it's going to be a modal? with dropshadow?)
@@ -51,17 +55,21 @@
                     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
                 </div>
             </div>
-            <div class="col col-8">
-                <div class="">
 
-                    <h1 class="display-4">Map View</h1>
-                    <img src="public/assets/img/map.jpg" width="900">
-                    <p class="lead">This is where we put our map</p>
-                    <hr class="my-4">
+            <div class="">
+                <div id='map' style='width: 800px; height: 800px;'></div>
+                <script>
+                    mapboxgl.accessToken =
+                        'pk.eyJ1IjoiZnh0emhvdSIsImEiOiJjazEwMTJncDgwMHp1M3BtdjkxZ3FicDY2In0.8rLpErDOJ5DGEOsiybn8Og';
+                    var map = new mapboxgl.Map({
+                        container: 'map',
+                        style: 'mapbox://styles/mapbox/streets-v11'
+                    });
+                </script>
 
-                </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
 
