@@ -72,10 +72,8 @@
     </nav>
 
     <ul id="slide-out" class="sidenav">
-        <ul id="slide-out" class="sidenav">
-            <li><a class="sidenav-close" href="#!">Clicking this will close Sidenav</a></li>
-        </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">close</i></a>
+
+        <a id="toggle_sidenav" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">close</i></a>
 
         <li>
             <div class="user-view">
@@ -86,11 +84,7 @@
         <li><a href="#!">Fourth</a></li>
     </ul>
 
-
-
     <div id='map'></div>
-
-
 
     <script>
         mapboxgl.accessToken =
@@ -170,6 +164,16 @@
                     }
                 });
         });
+
+
+
+
+        // document.querySelector("#toggle_sidenav").addEventListener("click", function () {
+        //     var elem = document.querySelector("#toggle_sidenav");
+        //     var options = {};
+        //     var instance = M.Sidenav.getInstance(elem, options);
+        //     instance.close();
+        // });
     </script>
 </body>
 
