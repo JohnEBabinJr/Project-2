@@ -1,4 +1,5 @@
 var db = require("../models");
+var path = require("path");
 
 module.exports = function(app) {
   // Load index page
@@ -12,7 +13,7 @@ module.exports = function(app) {
 
   //Load Submit Page
   app.get("/submit", function(req, res) {
-    res.render("submit", {});
+    res.sendFile(path.join(__dirname, "../views/submit.html"));
   });
 
   // Load individual

@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
 
     address: DataTypes.STRING,
 
-    description: DataTypes.TINYTEXT,
+    description: DataTypes.STRING,
 
     rating: DataTypes.INTEGER,
 
@@ -27,6 +27,7 @@ module.exports = function(sequelize, DataTypes) {
     itsLit: DataTypes.BOOLEAN,
 
     feminineProducts: DataTypes.BOOLEAN,
+    empty: DataTypes.BOOLEAN
   });
   return Jon;
 };
