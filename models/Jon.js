@@ -4,6 +4,8 @@ module.exports = function(sequelize, DataTypes) {
 
     address: DataTypes.STRING,
 
+    description: DataTypes.TINYTEXT,
+
     rating: DataTypes.INTEGER,
 
     cleanlinessRating: DataTypes.INTEGER,
