@@ -1,4 +1,67 @@
-<div class="container-fluid">
+<div id='map'></div>
+<script>
+
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZnh0emhvdSIsImEiOiJjazEwMTJncDgwMHp1M3BtdjkxZ3FicDY2In0.8rLpErDOJ5DGEOsiybn8Og';
+  var map = new mapboxgl.Map({
+    container: 'map', // Container ID
+    style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
+    center: [-121.4942, 38.5778], // Starting position [lng, lat]
+    zoom: 12, // Starting zoom level
+  });
+
+  var marker = new mapboxgl.Marker() // Initialize a new marker
+    .setLngLat([-121.4942, 38.5778]) // Marker [lng, lat] coordinates
+    .addTo(map); // Add the marker to the map
+
+  var geocoder = new MapboxGeocoder({ // Initialize the geocoder
+    accessToken: mapboxgl.accessToken, // Set the access token
+    mapboxgl: mapboxgl, // Set the mapbox-gl instance
+    marker: false, // Do not use the default marker style
+    placeholder: 'Search for bathrooms', // Placeholder text for the search bar
+    // bbox: [-122.30937, 37.84214, -122.23715, 37.89838], // Boundary for Berkeley 
+    proximity: {
+      longitude: -121.5059,
+      latitude: 38.8500
+    } // Coordinates of Sacramento
+  });
+
+
+
+  // Add the geocoder to the map
+  map.addControl(geocoder);
+
+  // After the map style has loaded on the page,
+  // add a source layer and default styling for a single point
+  map.on('load', function () {
+    map.addSource('single-point', {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: []
+      }
+    });
+
+    map.addLayer({
+      id: 'point',
+      source: 'single-point',
+      type: 'circle',
+      paint: {
+        'circle-radius': 10,
+        'circle-color': '#448ee4'
+      }
+    });
+
+    // Listen for the `result` event from the Geocoder
+    // `result` event is triggered when a user makes a selection
+    // Add a marker at the result's coordinates
+    geocoder.on('result', function (ev) {
+      map.getSource('single-point').setData(ev.result.geometry);
+    });
+  });
+</script>
+
+<div class="container-fluid bg bg-primary">
   <div class="row mt-4">
 
     <div class="col col-4 p-3 shadow-sm">
