@@ -17,7 +17,7 @@ module.exports = function(app) {
   });
 
   // Load individual
-  app.get("/bathroom/:id", function(req, res) {
+  app.get("/Jon/:id", function(req, res) {
     db.Jon.findOne({ where: { id: req.params.id } }).then(function(data) {
       res.render("bathroom", {
         Jon: data
