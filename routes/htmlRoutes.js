@@ -4,9 +4,9 @@ var path = require("path");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(data) {
+    db.Jon.findAll({}).then(function(data) {
       res.render("index", {
-        example: data
+        Jon: data
       });
     });
   });
@@ -20,7 +20,7 @@ module.exports = function(app) {
   app.get("/bathroom/:id", function(req, res) {
     db.Jon.findOne({ where: { id: req.params.id } }).then(function(data) {
       res.render("bathroom", {
-        example: data
+        Jon: data
       });
     });
   });

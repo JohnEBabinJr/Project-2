@@ -26,8 +26,7 @@ module.exports = function(sequelize, DataTypes) {
 
     itsLit: DataTypes.BOOLEAN,
 
-    feminineProducts: DataTypes.BOOLEAN,
-    empty: DataTypes.BOOLEAN
+    feminineProducts: DataTypes.BOOLEAN
   });
   return Jon;
 };
