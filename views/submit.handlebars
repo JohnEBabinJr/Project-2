@@ -3,7 +3,7 @@
         <div class="col">
 
             <h4>Add New Bathroom</h4>
-            <form class="create-form" action="/api/Jons/" method="POST">
+            <form class="create-form" action="/api/Jons" method="POST">
                 <div class="form-group">
                     <i class="material-icons prefix">account_circle</i><label for="locationName">Location of
                         Bathroom:</label>
@@ -19,7 +19,7 @@
                 <div class="switch">
                     <i class="material-icons prefix">account_circle</i><label>
 
-                        <input type="checkbox">
+                        <input class="genderNeutral" type="checkbox">
                         <span class="lever"></span>
 
                     </label>
@@ -107,18 +107,20 @@
 
 
                 <div class="description" style="margin-top: 30px;">
-                    <i class="material-icons prefix">account_circle</i><label for="address">Description</label>
-                    <input type="text" id="location" name="address" />
+                    <i class="material-icons prefix">account_circle</i><label for="description">Description</label>
+                    <input type="text" id="location" name="description" />
 
 
                 </div>
 
-            </form>
 
 
-            <button type="submit">Submit</button>
+
+                <button class="btn waves-effect waves-light" type="submit">Submit</button>
 
 
         </div>
     </div>
 </div>
+
+</form>
