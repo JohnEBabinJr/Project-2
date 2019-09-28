@@ -2,14 +2,14 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/bathrooms", function(req, res) {
+  app.get("/api/Jons", function(req, res) {
     db.Jon.findAll({}).then(function(data) {
       res.json(data);
     });
   });
 
   // Create a new bathroom
-  app.post("/api/bathrooms", function(req, res) {
+  app.post("/api/Jons", function(req, res) {
     db.Jon.create({
       locationName: req.body.locationName,
       address: req.body.address,

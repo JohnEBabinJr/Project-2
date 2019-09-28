@@ -1,25 +1,26 @@
 var db = require("../models");
+var path = require("path");
 
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(data) {
+    db.Jon.findAll({}).then(function(data) {
       res.render("index", {
-        example: data
+        Jon: data
       });
     });
   });
 
   //Load Submit Page
   app.get("/submit", function(req, res) {
-    res.render("submit", {});
+    res.sendFile(path.join(__dirname, "../views/submit.html"));
   });
 
   // Load individual
-  app.get("/bathroom/:id", function(req, res) {
+  app.get("/Jon/:id", function(req, res) {
     db.Jon.findOne({ where: { id: req.params.id } }).then(function(data) {
       res.render("bathroom", {
-        example: data
+        Jon: data
       });
     });
   });
