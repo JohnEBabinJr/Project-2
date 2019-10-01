@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
 
     feminineProducts: DataTypes.BOOLEAN,
 
-    coordinate: DataTypes.STRING,
+    coordinates: DataTypes.STRING,
 
     sharps: DataTypes.BOOLEAN
   });
