@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Hippo91^",
+    "password": "MySQL123",
     "database": "jondb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Hippo91^",
+    "password": "MySQL123",
     "database": "jondb",
     "host": "localhost",
     "dialect": "mysql",
