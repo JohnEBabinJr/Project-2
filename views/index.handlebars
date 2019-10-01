@@ -11,12 +11,12 @@
   });
 
   var popup = new mapboxgl.Popup({
-    closeOnClick: false
+    closeOnClick: true
   })
-    .setLngLat([-122.25948, 37.87221])
-    .setMaxWidth(500)
-    .setText("Our goal is to help everyone find a safe space to handle life's little emergencies. Use the map to find a bathroom near you.)
-      .addTo(map);
+    .setLngLat([-121.4942, 38.5778])
+    .setMaxWidth("200px")
+    .setText("Our goal is to help everyone find a safe space to handle life's little emergencies. Use the map to find a bathroom near you.")
+    .addTo(map);
 
   map.on('load', function () {
     // Add a layer showing the places.
