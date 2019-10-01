@@ -1,19 +1,21 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Get all examples
-  app.get("/api/Jons", function (req, res) {
-    db.Jon.findAll({}).then(function (data) {
+  app.get("/api/Jons", function(req, res) {
+    db.Jon.findAll({}).then(function(data) {
       res.json(data);
     });
   });
 
   // Create a new bathroom
-  app.post("/api/Jons", function (req, res) {
+  app.post("/api/Jons", function(req, res) {
     db.Jon.create({
       locationName: req.body.locationName,
       address: req.body.address,
-      //coordinates: req.body.coordinates,
+      coordinates: req.body.coordinates,
+      lat: req.body.lat,
+      long: req.body.long,
       description: req.body.description,
       rating: req.body.rating,
       cleanlinessRating: req.body.cleanlinessRating,
@@ -26,9 +28,8 @@ module.exports = function (app) {
       airDryer: req.body.airDryer,
       itsLit: req.body.itsLit,
       feminineProducts: req.body.feminineProducts,
-      sharps: req.body.sharps,
-      test: req.body.test
-    }).then(function (data) {
+      sharps: req.body.sharps
+    }).then(function(data) {
       res.json(data);
     });
   });

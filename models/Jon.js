@@ -4,7 +4,11 @@ module.exports = function(sequelize, DataTypes) {
 
     address: DataTypes.STRING,
 
-    // coordinates: DataTypes.STRING,
+    coordinates: DataTypes.STRING,
+
+    lat: DataTypes.FLOAT,
+
+    long: DataTypes.FLOAT,
 
     description: DataTypes.STRING,
 
@@ -29,8 +33,6 @@ module.exports = function(sequelize, DataTypes) {
     itsLit: DataTypes.BOOLEAN,
 
     feminineProducts: DataTypes.BOOLEAN,
-
-    coordinates: DataTypes.STRING,
 
     sharps: DataTypes.BOOLEAN
   });
