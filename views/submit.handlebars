@@ -11,6 +11,7 @@
 
                     <i class="material-icons prefix">account_circle</i> <label for="address">Address:</label>
                     <input type="text" id="location" name="address" />
+
                 </div>
 
 
@@ -19,8 +20,11 @@
                 <div class="switch">
                     <i class="material-icons prefix">account_circle</i><label>
 
-                        <input class="genderNeutral" type="checkbox" name="genderNeutral">
-                        <span class="lever"></span>
+                        <<<<<<< Updated upstream <input class="genderNeutral" type="checkbox" name="genderNeutral">
+                            =======
+                            <input class="genderNeutral check" type="checkbox" value="false" name="genderNeutral">
+                            >>>>>>> Stashed changes
+                            <span class="lever"></span>
 
                     </label>
                     Gender Neutral
@@ -30,7 +34,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class=" fChanging" type="checkbox">
+                        <input class=" fChanging check" type="checkbox" name="fChanging">
                         <span class="lever"></span>
 
                     </label>
@@ -41,7 +45,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="mChanging" type="checkbox">
+                        <input class="mChanging check" type="checkbox" name="mChanging">
                         <span class="lever"></span>
 
                     </label>
@@ -52,7 +56,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="handicap" type="checkbox">
+                        <input class="handicap check" type="checkbox" name="handicap">
                         <span class="lever"></span>
 
                     </label>
@@ -63,7 +67,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="itsLit" type="checkbox">
+                        <input class="itsLit check" type="checkbox" name="itsLit">
                         <span class="lever"></span>
 
                     </label>
@@ -73,7 +77,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="multiPly" type="checkbox">
+                        <input class="multiPly check" type="checkbox" name="multiPly">
                         <span class="lever"></span>
 
                     </label>
@@ -84,7 +88,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="airDryer" type="checkbox">
+                        <input class="airDryer check" type="checkbox" name="airDryer">
                         <span class="lever"></span>
 
                     </label>
@@ -97,7 +101,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="alwaysOpen" type="checkbox">
+                        <input class="alwaysOpen check" type="checkbox" name="alwaysOpen">
                         <span class="lever"></span>
 
                     </label>
@@ -110,7 +114,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="sharps" type="checkbox">
+                        <input class="sharps check" type="checkbox">
                         <span class="lever"></span>
 
                     </label>
@@ -122,7 +126,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="cleanlinessRating" type="checkbox">
+                        <input class="cleanlinessRating" type="checkbox" name="cleanlinessRating">
                         <span class="lever"></span>
 
                     </label>
@@ -151,9 +155,18 @@
 
                 <button class="btn waves-effect waves-light" type="submit">Submit</button>
 
-
+            </form>
         </div>
     </div>
 </div>
 
-</form>
+<script>
+    $(".check").on('change', function () {
+        if ($(this).is(':checked')) {
+            $(this).val('true');
+        }
+        else {
+            $(this).val('false');
+        }
+    });
+</script>

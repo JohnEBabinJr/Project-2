@@ -13,6 +13,7 @@ module.exports = function (app) {
     db.Jon.create({
       locationName: req.body.locationName,
       address: req.body.address,
+      //coordinates: req.body.coordinates,
       description: req.body.description,
       rating: req.body.rating,
       cleanlinessRating: req.body.cleanlinessRating,
