@@ -28,7 +28,11 @@ module.exports = function(sequelize, DataTypes) {
 
     itsLit: DataTypes.BOOLEAN,
 
-    feminineProducts: DataTypes.BOOLEAN
+    feminineProducts: DataTypes.BOOLEAN,
+
+    coordinate: DataTypes.STRING,
+
+    sharps: DataTypes.BOOLEAN
   });
   return Jon;
 };
