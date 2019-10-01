@@ -2,6 +2,7 @@
 
 <script>
 
+
   mapboxgl.accessToken = 'pk.eyJ1IjoiZnh0emhvdSIsImEiOiJjazEwMTJncDgwMHp1M3BtdjkxZ3FicDY2In0.8rLpErDOJ5DGEOsiybn8Og';
 
   var map = new mapboxgl.Map({
@@ -10,6 +11,7 @@
     center: [-121.4942, 38.5778], // Starting position [lng, lat]
     zoom: 12, // Starting zoom level
   });
+
 
 
   map.on('load', function () {
@@ -64,35 +66,47 @@
 
 
 
-  // When a click event occurs on a feature in the places layer, open a popup at the
-  // location of the feature, with description HTML from its properties.
-  map.on('click', 'places', function (e) {
-    var coordinates = e.features[0].geometry.coordinates.slice();
-    var description = e.features[0].properties.description;
+  var popup = new mapboxgl.Popup({
+    closeOnClick: true
+  })
+    .setLngLat([-121.4942, 38.5778])
+    .setMaxWidth("200px")
+    .setText("Our goal is to help everyone find a safe space to handle life's little emergencies. Use the map to find a bathroom near you.")
+    .addTo(map);
 
-    // Ensure that if the map is zoomed out such that multiple
-    // copies of the feature are visible, the popup appears
-    // over the copy being pointed to.
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-      coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    }
+  
+      
 
-    new mapboxgl.Popup()
-      .setLngLat(coordinates)
-      .setHTML(description)
-      .addTo(map);
-  });
+    // When a click event occurs on a feature in the places layer, open a popup at the
+    // location of the feature, with description HTML from its properties.
+    map.on('click', 'places', function (e) {
+      var coordinates = e.features[0].geometry.coordinates.slice();
+      var description = e.features[0].properties.description;
 
-  // Change the cursor to a pointer when the mouse is over the places layer.
-  map.on('mouseenter', 'places', function () {
-    map.getCanvas().style.cursor = 'pointer';
-  });
+      // Ensure that if the map is zoomed out such that multiple
+      // copies of the feature are visible, the popup appears
+      // over the copy being pointed to.
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+
+      new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(map);
+    });
+
+
+    // Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'places', function () {
+      map.getCanvas().style.cursor = 'pointer';
+    });
+
 
   // Change it back to a pointer when it leaves.
   map.on('mouseleave', 'places', function () {
     map.getCanvas().style.cursor = '';
   });
-
 
 
   var marker = new mapboxgl.Marker() // Initialize a new marker
@@ -127,11 +141,6 @@
       }
     });
 
-
-
-    // Listen for the `result` event from the Geocoder
-    // `result` event is triggered when a user makes a selection
-    // Add a marker at the result's coordinates
     geocoder.on('result', function (ev) {
       map.getSource('single-point').setData(ev.result.geometry);
     });

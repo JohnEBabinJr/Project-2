@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="logic.js"></script>
+    <meta htopen intp-equiv="X-UA-Compatible" content="ie=edge">
+
     <!-- Bootstrap -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
@@ -32,19 +36,16 @@
     <title>Project 2 </title>
 
     <style>
-        body {
-            margin: 0;
-            padding: 0;
+        nav {
+            background-color: yellow;
         }
 
         #map {
             position: absolute;
-            top: 6%;
+            top: 0%;
             bottom: 0;
             width: 100%;
         }
-
-
 
         input:not([type]),
         input[type=text]:not(.browser-default),
@@ -61,31 +62,157 @@
         textarea.materialize-textarea {
             text-align: center;
         }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #232323;
+            color: #232323;
+            font-family: "Avenir Next", "Avenir", sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: #232323;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: light-blue;
+        }
+
+
+        #menuToggle {
+            display: block;
+            position: relative;
+            top: 25px;
+            left: 25px;
+
+            z-index: 1;
+
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        #menuToggle input {
+            display: block;
+            width: 40px;
+            height: 32px;
+            position: absolute;
+            top: -7px;
+            left: -5px;
+            background-color: #cdcdcd;
+            cursor: pointer;
+            opacity: 0;
+
+            z-index: 2;
+
+            -webkit-touch-callout: none;
+        }
+
+        #menuToggle span {
+            display: block;
+            width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+
+            background: #232323;
+            border-radius: 3px;
+            z-index: 1;
+            transform-origin: 4px 0px;
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+                background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+                opacity 0.55s ease;
+        }
+
+        #menuToggle span:first-child {
+            transform-origin: 0% 0%;
+        }
+
+        #menuToggle span:nth-last-child(2) {
+            transform-origin: 0% 100%;
+        }
+
+        #menuToggle input:checked~span {
+            opacity: 1;
+            transform: rotate(45deg) translate(-2px, -1px);
+            background: #232323;
+        }
+
+        #menuToggle input:checked~span:nth-last-child(3) {
+            opacity: 0;
+            transform: rotate(0deg) scale(0.2, 0.2);
+        }
+
+
+        #menuToggle input:checked~span:nth-last-child(2) {
+            transform: rotate(-45deg) translate(0, -1px);
+        }
+
+        #menu {
+            position: absolute;
+            width: 300px;
+            margin: -100px 0 0 -50px;
+            padding: 50px;
+            padding-top: 125px;
+            background-color: #cdcdcd;
+            color: #232323;
+            list-style-type: none;
+            -webkit-font-smoothing: antialiased;
+            transform-origin: 0% 0%;
+            transform: translate(-100%, 0);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        }
+
+        #menu li {
+            padding: 10px 0;
+            font-size: 22px;
+        }
+
+        #menuToggle input:checked~ul {
+            transform: none;
+        }
     </style>
 </head>
 
 <body>
-    <a href="#" data-target="slide-out" class="sidenav-trigger btn"><i class="material-icons">menu</i></a>
 
-    <nav>
+    <nav role="navigation">
+        <div id="menuToggle">
 
+            <input type="checkbox" />
+
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+
+            <ul id="menu">
+                <a href="#">
+                    <li>Home</li>
+                </a>
+                <a href="#">
+                    <li>About</li>
+                </a>
+                <a href="#">
+                    <li>Info</li>
+                </a>
+                <a href="#">
+                    <li>Contact</li>
+                </a>
+                <a href="https://erikterwan.com/" target="_blank">
+                    <li>Show me more</li>
+                </a>
+            </ul>
+        </div>
     </nav>
 
-    <ul id="slide-out" class="sidenav">
 
-        <a id="toggle_sidenav" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">close</i></a>
-
-        <li>
-            <div class="user-view">
-                <div class="background">
-        <li><a href="#!">First</a></li>
-        <li><a href="#!">Second</a></li>
-        <li><a href="#!">Third</a></li>
-        <li><a href="#!">Fourth</a></li>
-    </ul>
 
     <div id='map'></div>
-
     <script>
         mapboxgl.accessToken =
             'pk.eyJ1IjoiZnh0emhvdSIsImEiOiJjazEwMTJncDgwMHp1M3BtdjkxZ3FicDY2In0.8rLpErDOJ5DGEOsiybn8Og';
@@ -95,6 +222,17 @@
             center: [-122.25948, 37.87221], // Starting position [lng, lat]
             zoom: 12, // Starting zoom level
         });
+
+        var popup = new mapboxgl.Popup({
+                closeOnClick: true
+            })
+            .setLngLat([-122.25948, 37.87221])
+            .setMaxWidth('300px')
+            .setText(
+                "Our goal is to help everyone find a safe space to handle life's little emergencies. Use the map to find a bathroom near you."
+            )
+            .addTo(map);
+
 
         var marker = new mapboxgl.Marker() // Initialize a new marker
             .setLngLat([-122.25948, 37.87221]) // Marker [lng, lat] coordinates
@@ -143,37 +281,6 @@
                 map.getSource('single-point').setData(ev.result.geometry);
             });
         });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var elems = document.querySelectorAll(".sidenav");
-            var options = {};
-            var instances = M.Sidenav.init(elems, options);
-
-            document
-                .querySelector("#toggle_sidenav")
-                .addEventListener("click", function () {
-                    var elem = document.querySelector(".sidenav");
-                    var instance = M.Sidenav.getInstance(elem);
-
-                    if (instance.isOpen) {
-                        console.log("Is open: I need to close it");
-                        instance.close();
-                    } else {
-                        console.log("Is closed: I need to open it");
-                        instance.open();
-                    }
-                });
-        });
-
-
-
-
-        // document.querySelector("#toggle_sidenav").addEventListener("click", function () {
-        //     var elem = document.querySelector("#toggle_sidenav");
-        //     var options = {};
-        //     var instance = M.Sidenav.getInstance(elem, options);
-        //     instance.close();
-        // });
     </script>
 </body>
 
