@@ -6,16 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
+
   <!-- Bootstrap -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <!-- Jquery -->
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -29,96 +26,50 @@
   <link rel='stylesheet'
     href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css'
     type='text/css' />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+
+  <link rel="stylesheet" href="/styles/styles.css">
+
   <title>Project 2 </title>
 </head>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-  }
 
-  #map {
-    position: absolute;
-    top: 6%;
-    bottom: 0;
-    width: 100%;
-  }
-
-  input:not([type]),
-  input[type=text]:not(.browser-default),
-  input[type=password]:not(.browser-default),
-  input[type=email]:not(.browser-default),
-  input[type=url]:not(.browser-default),
-  input[type=time]:not(.browser-default),
-  input[type=date]:not(.browser-default),
-  input[type=datetime]:not(.browser-default),
-  input[type=datetime-local]:not(.browser-default),
-  input[type=tel]:not(.browser-default),
-  input[type=number]:not(.browser-default),
-  input[type=search]:not(.browser-default),
-  textarea.materialize-textarea {
-    text-align: center;
-  }
-
-  label {
-    font-size: 14px;
-  }
-
-  .mapboxgl-popup {
-    max-width: 400px;
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  }
-</style>
 
 
 <body>
-  <a href="#" data-target="slide-out" class="sidenav-trigger btn"><i class="material-icons">menu</i></a>
+  <nav role="navigation">
+    <div id="menuToggle">
 
-  <nav>
+      <input type="checkbox" />
 
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+
+      <ul id="menu">
+        <a href="#">
+          <li>Home</li>
+        </a>
+        <a href="#">
+          <li>About</li>
+        </a>
+        <a href="#">
+          <li>Info</li>
+        </a>
+        <a href="#">
+          <li>Contact</li>
+        </a>
+        <a href="https://erikterwan.com/" target="_blank">
+          <li>Show me more</li>
+        </a>
+      </ul>
+    </div>
   </nav>
-
-  <ul id="slide-out" class="sidenav">
-
-    <a id="toggle_sidenav" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">close</i></a>
-
-    <li>
-      <div class="user-view">
-        <div class="background">
-    <li><a href="#!">First</a></li>
-    <li><a href="#!">Second</a></li>
-    <li><a href="#!">Third</a></li>
-    <li><a href="#!">Fourth</a></li>
-  </ul>
 
 
   {{{body}}}
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      var elems = document.querySelectorAll(".sidenav");
-      var options = {};
-      var instances = M.Sidenav.init(elems, options);
-
-      document
-        .querySelector("#toggle_sidenav")
-        .addEventListener("click", function () {
-          var elem = document.querySelector(".sidenav");
-          var instance = M.Sidenav.getInstance(elem);
-
-          if (instance.isOpen) {
-            console.log("Is open: I need to close it");
-            instance.close();
-          } else {
-            console.log("Is closed: I need to open it");
-            instance.open();
-          }
-        });
-    });
-
-  </script>
 
   {{!-- <footer class="page-footer">
     <div class="container">
@@ -146,7 +97,6 @@
       </div>
     </div>
   </footer> --}}
-
 
 </body>
 
