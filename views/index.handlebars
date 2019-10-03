@@ -17,7 +17,7 @@
 
 
   function getGeoJson(geo) {
-    var arr = [];
+
     for (var i = 0; i < response.length; i++) {
       var geo = {
         type: 'Feature',
@@ -41,7 +41,7 @@
       features: [arr],
     };
   }
-
+  var arr = [];
   map.on('load', function () {
     // Add a layer showing the places.
     $.ajax({
@@ -61,7 +61,8 @@
             title: response[i].locationName,
             description: response[i].locationName,
             link: "/Jon/" + response[i].id,
-            id: response[i].id
+            id: response[i].id,
+            icon: "theater",
           },
         };
         arr.push(geo);
@@ -73,13 +74,23 @@
 
       console.log(geoJson);
       var myLayer = L.mapbox.featureLayer().addTo(map);
+
       myLayer.on('layeradd', function (e) {
         var marker = e.layer,
           feature = marker.feature;
-        marker.setIcon(L.icon(feature.properties.icon));
+        //marker.setIcon(L.icon(feature.properties.icon));
       });
-      myLayer.setGeoJSON(geojson);
+      myLayer.setGeoJSON(geoJson);
       mapOne.scrollWheelZoom.disable();
+
+
+      map.addSource('single-point', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [arr]
+        }
+      });
 
       map.addLayer({
         "id": "places",
@@ -157,14 +168,15 @@
   });
 
 
-  var marker = new mapboxgl.Marker() // Initialize a new marker
-    .setLngLat([-121.4942, 38.5778]) // Marker [lng, lat] coordinates
-    .addTo(map); // Add the marker to the map
+  //var marker = new mapboxgl.Marker() // Initialize a new marker
+  //.setLngLat([-121.4942, 38.5778]) // Marker [lng, lat] coordinates
+  //.addTo(map); // Add the marker to the map
+
 
   var geocoder = new MapboxGeocoder({ // Initialize the geocoder
     accessToken: mapboxgl.accessToken, // Set the access token
     mapboxgl: mapboxgl, // Set the mapbox-gl instance
-    marker: true, // Do not use the default marker style
+    marker: false, // Do not use the default marker style
     placeholder: 'Search for bathrooms', // Placeholder text for the search bar
     // bbox: [-122.30937, 37.84214, -122.23715, 37.89838], // Boundary for Berkeley
     proximity: {
@@ -184,7 +196,7 @@
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
-        features: []
+        features: [arr]
       }
     });
 
