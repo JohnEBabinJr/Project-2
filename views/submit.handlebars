@@ -1,6 +1,6 @@
 <div class="container">
     <h4 class="mb-5">Add a Bathroom</h4>
-    <form class="create-form" action="/api/Jons" method="POST">
+    <form class="create-form">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="locationName">Location of Bathroom</label>
@@ -249,7 +249,8 @@
         }
     });
 
-    $(".submitbtn").on("click", function () {
+    $(".submitbtn").on("click", function (event) {
+        event.preventDefault();
         var locationName = $("#locationName").val();
         var addressLine = $("#streetaddress").val();
         var city = $("#city").val();
@@ -279,16 +280,17 @@
             var coordinates = response.resourceSets[0].resources[0].point.coordinates;
             var address = addressLine + " " + city + " " + state + ", " + zipCode;
             console.log(coordinates);
-            $.ajax("/api/Jons", {
+            $.ajax({
                 type: "POST",
+                url: "/api/Jons",
                 data: {
                     locationName: locationName,
                     address: address,
                     long: coordinates[1],
                     lat: coordinates[0],
                     description: description,
-                    rating: rating,
-                    cleanlinessRating: cleanlinessRating,
+                    rating: 5,
+                    cleanlinessRating: 5,
                     genderNeutral: genderNeutral,
                     handicap: handicap,
                     multiPly: multiPly,

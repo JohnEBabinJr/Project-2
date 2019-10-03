@@ -10,6 +10,7 @@ module.exports = function(app) {
 
   // Create a new bathroom
   app.post("/api/Jons", function(req, res) {
+    console.log(req.body);
     db.Jon.create({
       locationName: req.body.locationName,
       address: req.body.address,
