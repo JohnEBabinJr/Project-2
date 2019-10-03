@@ -1,263 +1,302 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
+    <h4>Add a Bathroom</h4>
+    <form class="create-form" action="/api/Jons" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="locationName">Location of Bathroom</label>
+                <input type="email" class="form-control" id="locationName" placeholder="e.g. Park Place">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="streetaddress">Street Address</label>
+                <input type="text" class="form-control" id="streetaddress" placeholder="123 Place Dr.">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" placeholder="Sacramento">
+            </div>
 
-            <h4>Add New Bathroom</h4>
-            <form class="create-form">
-                <div class="form-group">
-                    <i class="material-icons prefix">account_circle</i><label for="locationName">Location of
-                        Bathroom:</label>
-                    <input type="text" id="locationName" name="locationName" />
+            <div class="form-group col-md-2">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" placeholder="CA">
+            </div>
 
-                    <i class="material-icons prefix">account_circle</i> <label for="streetaddress">Street
-                        Address:</label>
-                    <input type="text" id="streetaddress" />
-
-                    <i class="material-icons prefix">account_circle</i> <label for="city">City:</label>
-                    <input type="text" id="city" />
-
-                    <i class="material-icons prefix">account_circle</i> <label for="state">State:</label>
-                    <input type="text" id="state" />
-
-                    <i class="material-icons prefix">account_circle</i> <label for="zipcode">Zip Code:</label>
-                    <input type=" number" id="zipcode" />
-
-                </div>
+            <div class="form-group col-md-4">
+                <label for="zipcode">Zip Code</label>
+                <input type="number" class="form-control" id="zipcode" placeholder="99999">
+            </div>
+        </div>
 
 
 
-                <h5 class="mt-3">Bathroom Details</h5>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="switch">
-                            <label>
-
-                                <input class="genderNeutral check" type="checkbox" value="false" name="genderNeutral">
-
-                            </label>
-                            Gender Neutral
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="switch">
-
-                            <label>
-
-                                <input class="fChanging check" type="checkbox" value="false" name="fChanging">
-                                <span class="lever"></span>
-
-                            </label>
-                            Baby Changing Station (F)
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="switch">
-
-                            <input class="mChanging check" type="checkbox" value="false" name="mChanging">
-                            <span class="lever"></span>
-
-                            </label>
-                            Baby Changing Station (M)
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="switch">
-
-                            <input class="handicap check" type="checkbox" value="false" name="handicap">
-                            <span class="lever"></span>
-
-                            </label>
-                            Handicap
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="switch">
-
-                            <label>
-
-                                <input class="itsLit check" type="checkbox" value="false" name="itsLit">
-                                <span class="lever"></span>
-
-                            </label>
-                            Well-Lit
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="switch">
-
-                            <label>
-
-                                <input class="multiPly check" type="checkbox" value="false" name="multiPly">
-                                <span class="lever"></span>
-
-                            </label>
-                            Multi-ply Toilet Paper
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="switch">
-
-                            <label>
-
-                                <input class="airDryer check" type="checkbox" value="false" name="airDryer">
-                                <span class="lever"></span>
-
-                            </label>
-                            Air Dryer
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="switch">
-
-                            <label>
-
-                                <input class="alwaysOpen check" type="checkbox" value="false" name="alwaysOpen">
-                                <span class="lever"></span>
-
-                            </label>
-                            Open 24 hours
-                        </div>
-
-                        <div class="switch">
-
-                            <label>
-
-                                <input class="feminineProducts check" type="checkbox" value="false"
-                                    name="feminineProducts">
-                                <span class="lever"></span>
-
-                            </label>
-                            Feminine Products
-
-                        </div>
-                    </div>
-                </div>
-
+        <h5 class="mt-3">Bathroom Details</h5>
+        <div class="row">
+            <div class="col-md-4">
                 <div class="switch">
-                    <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="sharps check" type="checkbox" value="false" name="sharps">
-                        <span class="lever"></span>
+                        <input class="genderNeutral check" type="checkbox" value="false" name="genderNeutral">
+
+                    </label>
+                    Gender Neutral
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="switch">
+
+                    <label>
+
+                        <input class="fChanging check" type="checkbox" name="fChanging">
+
+
+                    </label>
+                    Baby Changing Station (F)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="switch">
+
+                    <label>
+                        <input class="mChanging check" type="checkbox" name="mChanging">
+                    </label>
+                    Baby Changing Station (M)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="switch">
+
+                    <label>
+                        <input class="handicap check" type="checkbox" name="handicap">
+                    </label>
+                    Handicap
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="switch">
+
+                    <label>
+
+                        <input class="itsLit check" type="checkbox" name="itsLit">
+
+
+                    </label>
+                    Well-Lit
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="switch">
+
+                    <label>
+
+                        <input class="multiPly check" type="checkbox" name="multiPly">
+
+
+                    </label>
+                    Multi-ply Toilet Paper
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="switch">
+
+                    <label>
+
+                        <input class="airDryer check" type="checkbox" name="airDryer">
+
+
+                    </label>
+                    Air Dryer
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="switch">
+
+                    <label>
+
+                        <input class="alwaysOpen check" type="checkbox" name="alwaysOpen">
+
+
+                    </label>
+                    Open 24 hours
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="switch">
+
+                    <label>
+
+                        <input class="sharps check" type="checkbox" name="sharps">
+
 
                     </label>
                     Sharps Container
 
-                    <label for="star3">3</label>
-                    <input class="m-6" type="radio" id="star3" name="rating" value="3" />
-                    <label for="star2">2</label>
-                    <input class="m-6" type="radio" id="star2" name="rating" value="2" />
+                </div>
+            </div>
 
-                    {{!-- <div class="checkbox">
-                    <i class="material-icons prefix">account_circle</i>
+
+            <div class="col-md-4">
+                <div class="switch">
+
                     <label>
 
-                        <input class="cleanlinessRating" type="checkbox" value="false" name="cleanlinessRating">
+                        <input class="feminineProducts check" type="checkbox" value="false" name="feminineProducts">
                         <span class="lever"></span>
 
                     </label>
-                    Cleanliness Rating
+                    Feminine Products
 
-                </div> --}}
-
-                    <div class="description" style="margin-top: 30px;">
-                        <i class="material-icons prefix">account_circle</i><label for="description">Description</label>
-                        <input type="text" id="description" name="description" />
-                    </div>
-
-
-
-                    <div class="form-group mt-3">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="description">
-                                    <label for="exampleFormControlTextarea1">Description</label>
-                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="4"
-                                        placeholder="Enter a description for the bathroom. This will help others
-                    easily identify the bathroom."></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mb-5">Submit</button>
-
-            </form>
+                </div>
+            </div>
         </div>
+</div>
+</div>
+
+<h5 class="h5 mt-3">Ratings</h5>
+<div class="row">
+    <div class="col-md-4">
+
+        <fieldset class="cleanlinessRating">
+            Cleanliness Rating<br>
+            <label for="star1">1</label>
+            <input class="m-6" type="radio" id="star1" name="rating" value="1" />
+            <label for="star2">2</label>
+
+            <input class="m-6" type="radio" id="star2" name="rating" value="2" />
+            <label for="star3">3</label>
+            <input class="m-6" type="radio" id="star3" name="rating" value="3" />
+            <label for="star4">4</label>
+            <input class="m-6" type="radio" id="star4" name="rating" value="4" />
+
+            <label for="star5">5</label>
+            <input class="m-6" type="radio" id="star5" name="rating" value="5" />
+
+        </fieldset>
+    </div>
 
 
-        <script>
-            $(".check").on('change', function () {
-                if ($(this).is(':checked')) {
-                    $(this).val('true');
+
+
+
+    <div class="col-md-4">
+
+        <fieldset class="rating">
+            General Rating<br>
+            <label for="star5">5</label>
+            <input class="m-6" type="radio" id="star5" name="rating" value="5" />
+            <label for="star4">4</label>
+            <input class="m-6" type="radio" id="star4" name="rating" value="4" />
+
+
+            <label for="star3">3</label>
+            <input class="m-6" type="radio" id="star3" name="rating" value="3" />
+            <label for="star2">2</label>
+            <input class="m-6" type="radio" id="star2" name="rating" value="2" />
+
+            <label for="star1">1</label>
+            <input class="m-6" type="radio" id="star1" name="rating" value="1" />
+        </fieldset>
+    </div>
+</div>
+
+
+
+
+<div class="form-group mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="description">
+                <label for="exampleFormControlTextarea1">Description</label>
+                <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="4" placeholder="Enter a description for the bathroom. This will help others
+                    easily identify the bathroom."></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type=" submit" class="btn btn-primary mb-5">Submit</button>
+
+</form>
+</div>
+
+
+<script>
+    $(".check").on('change', function () {
+        if ($(this).is(':checked')) {
+            $(this).val('true');
+        }
+        else {
+            $(this).val('false');
+        }
+    });
+
+    $(".submitbtn").on("click", function () {
+        var addressLine = $("#streetaddress").val();
+        var city = $("#city").val();
+        var state = $("#state").val();
+        var zipCode = $("#zipcode").val();
+        var genderNeutral = $(".genderNeutral").val();
+        var fChanging = $(".fChanging").val();
+        var mChanging = $(".mChanging").val();
+        var handicap = $(".handicap").val();
+        var itsLit = $(".itsLit").val();
+        var multiPly = $(".multiPly").val();
+        var airDryer = $(".airDryer").val();
+        var alwaysOpen = $(".alwaysOpen").val();
+        var feminineProducts = $(".feminineProducts").val();
+        var sharps = $(".sharps").val();
+        var description = $("#description").val();
+        var rating = $("#rating").val();
+        var cleanlinessRating = $(".cleanlinessRating").val();
+
+        var querycall = "http://dev.virtualearth.net/REST/v1/Locations/US/" + state + "/" + zipCode + "/" + city + "/" + addressLine + "?maxResults=1&key=Ao1-VCDcAKZs7Cmk5770BFTlR8_gSj_IuvYegQKIRn_b8uBJlKMqfZqRt-viiNPw";
+        $.ajax({
+            url: querycall,
+            method: "GET"
+        }).then(function (response) {
+            var coordinates = response.resourceSets[0].resources[0].point.coordinates;
+            var address = addressLine + " " + city + " " + state + ", " + zipCode;
+            $.ajax("/api/Jons", {
+                type: "POST",
+                data: {
+                    address: address,
+                    long: coordinates[1],
+                    lat: coordinates[0],
+                    description: description,
+                    rating: rating,
+                    cleanlinessRating: cleanlinessRating,
+                    genderNeutral: genderNeutral,
+                    handicap: handicap,
+                    multiPly: multiPly,
+                    alwaysOpen: alwaysOpen,
+                    mChanging: mChanging,
+                    fChanging: fChanging,
+                    airDryer: airDryer,
+                    itsLit: itsLit,
+                    feminineProducts: feminineProducts,
+                    sharps: sharps
                 }
-                else {
-                    $(this).val('false');
-                }
+            }).then(function () {
+                console.log("Posted to API");
             });
-
-            $(".submitbtn").on("click", function () {
-                var addressLine = $("#streetaddress").val();
-                var city = $("#city").val();
-                var state = $("#state").val();
-                var zipCode = $("#zipcode").val();
-                var genderNeutral = $(".genderNeutral").val();
-                var fChanging = $(".fChanging").val();
-                var mChanging = $(".mChanging").val();
-                var handicap = $(".handicap").val();
-                var itsLit = $(".itsLit").val();
-                var multiPly = $(".multiPly").val();
-                var airDryer = $(".airDryer").val();
-                var alwaysOpen = $(".alwaysOpen").val();
-                var feminineProducts = $(".feminineProducts").val();
-                var sharps = $(".sharps").val();
-                var description = $("#description").val();
-                var rating = $("#rating").val();
-                var cleanlinessRating = $(".cleanlinessRating").val();
-
-                var querycall = "http://dev.virtualearth.net/REST/v1/Locations/US/" + state + "/" + zipCode + "/" + city + "/" + addressLine + "?maxResults=1&key=Ao1-VCDcAKZs7Cmk5770BFTlR8_gSj_IuvYegQKIRn_b8uBJlKMqfZqRt-viiNPw";
-                $.ajax({
-                    url: querycall,
-                    method: "GET"
-                }).then(function (response) {
-                    var coordinates = response.resourceSets[0].resources[0].point.coordinates;
-                    var address = addressLine + " " + city + " " + state + ", " + zipCode;
-                    $.ajax("/api/Jons", {
-                        type: "POST",
-                        data: {
-                            address: address,
-                            long: coordinates[1],
-                            lat: coordinates[0],
-                            description: description,
-                            rating: rating,
-                            cleanlinessRating: cleanlinessRating,
-                            genderNeutral: genderNeutral,
-                            handicap: handicap,
-                            multiPly: multiPly,
-                            alwaysOpen: alwaysOpen,
-                            mChanging: mChanging,
-                            fChanging: fChanging,
-                            airDryer: airDryer,
-                            itsLit: itsLit,
-                            feminineProducts: feminineProducts,
-                            sharps: sharps
-                        }
-                    }).then(function () {
-                        console.log("Posted to API");
-                    });
-                });
-            });
-        </script>
+        });
+    });
+</script>
