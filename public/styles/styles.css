@@ -2,9 +2,7 @@
   line-height: 2.5;
 }
 
-nav {
-  background-color: yellow;
-}
+
 
 #map {
   position: absolute;
@@ -30,9 +28,9 @@ textarea.materialize-textarea {
 }
 
 body {
+
   margin: 0;
   padding: 0;
-
   color: #232323;
   font-family: "Avenir Next", "Avenir", sans-serif;
 }
