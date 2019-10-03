@@ -16,51 +16,82 @@
 
   map.on('load', function () {
     // Add a layer showing the places.
-
     $.ajax({
       url: "api/Jons",
       type: "GET"
     }).then(function (response) {
-      console.log(response)
+      console.log(response);
 
-      for (var i = 0; i < response.length; i++) {
-
-        var ok = {
-          "type": "Feature",
-          "properties": {
-            "description": response[i].description,
-            "icon": "theatre"
+      var geojson = {
+        type: 'FeatureCollection',
+        features: [{
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [-121.4940, 38.5778]
           },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [(response[i].long), (response[i].lat)]
+          properties: {
+            title: 'Mapbox',
+            description: 'Washington, D.C.'
           }
+        },
+        {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [-121.4942, 38.5776]
+          },
+          properties: {
+            title: 'Mapbox',
+            description: 'San Francisco, California'
+          }
+        }]
+      };
+
+      geojson.features.forEach(function (marker) {
+
+        // create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
+
+        // make a marker for each feature and add to the map
+        new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .addTo(map);
+      });
+
+
+      new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+        .addTo(map);
+
+      map.addLayer({
+        "id": "places",
+        "type": "symbol",
+        "source": {
+          "type": "geojson",
+          "data": {
+            "type": "FeatureCollection",
+            "features": [{
+              "type": "Feature",
+              "properties": {
+                "description": response[i].description,
+                "icon": "dot"
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [(response[i].long), (response[i].lat)]
+              }
+            }]
+          }
+        },
+        "layout": {
+          "icon-image": "{icon}-15",
+          "icon-allow-overlap": true
         }
-
-        map.addLayer({
-          "id": "places",
-          "type": "symbol",
-          "source": {
-            "type": "geojson",
-            "data": {
-              "type": "FeatureCollection",
-              "features": [
-
-                ok
-
-              ]
-            }
-          },
-          "layout": {
-            "icon-image": "{icon}-15",
-            "icon-allow-overlap": true
-          }
-        })
-        var marker = new mapboxgl.Marker() // Initialize a new marker
-          .setLngLat([response[i].long, response[i].lat]) // Marker [lng, lat] coordinates
-          .addTo(map); // Add the marker to the mapx
-      }
-
+      })
     })
   });
 
@@ -74,33 +105,33 @@
     .setText("Our goal is to help everyone find a safe space to handle life's little emergencies. Use the map to find a bathroom near you.")
     .addTo(map);
 
-  
-      
-
-    // When a click event occurs on a feature in the places layer, open a popup at the
-    // location of the feature, with description HTML from its properties.
-    map.on('click', 'places', function (e) {
-      var coordinates = e.features[0].geometry.coordinates.slice();
-      var description = e.features[0].properties.description;
-
-      // Ensure that if the map is zoomed out such that multiple
-      // copies of the feature are visible, the popup appears
-      // over the copy being pointed to.
-      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-      }
-
-      new mapboxgl.Popup()
-        .setLngLat(coordinates)
-        .setHTML(description)
-        .addTo(map);
-    });
 
 
-    // Change the cursor to a pointer when the mouse is over the places layer.
-    map.on('mouseenter', 'places', function () {
-      map.getCanvas().style.cursor = 'pointer';
-    });
+
+  // When a click event occurs on a feature in the places layer, open a popup at the
+  // location of the feature, with description HTML from its properties.
+  map.on('click', 'places', function (e) {
+    var coordinates = e.features[0].geometry.coordinates.slice();
+    var description = e.features[0].properties.description;
+
+    // Ensure that if the map is zoomed out such that multiple
+    // copies of the feature are visible, the popup appears
+    // over the copy being pointed to.
+    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+      coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+    }
+
+    new mapboxgl.Popup()
+      .setLngLat(coordinates)
+      .setHTML(description)
+      .addTo(map);
+  });
+
+
+  // Change the cursor to a pointer when the mouse is over the places layer.
+  map.on('mouseenter', 'places', function () {
+    map.getCanvas().style.cursor = 'pointer';
+  });
 
 
   // Change it back to a pointer when it leaves.
