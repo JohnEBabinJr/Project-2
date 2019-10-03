@@ -13,7 +13,6 @@ module.exports = function(app) {
     db.Jon.create({
       locationName: req.body.locationName,
       address: req.body.address,
-      coordinates: req.body.coordinates,
       lat: req.body.lat,
       long: req.body.long,
       description: req.body.description,
