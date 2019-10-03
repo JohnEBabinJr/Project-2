@@ -1,12 +1,15 @@
+span {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 
-
-
 #map {
   position: absolute;
-  top: 0%;
+  top: 6%;
   bottom: 0;
   width: 100%;
 }
@@ -35,6 +38,14 @@ body {
   font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
+#logo {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 400;
+  z-index: 1;
+  color: white;
+  text-align: center;
+}
+
 a {
   text-decoration: none;
   color: #232323;
@@ -51,8 +62,7 @@ a:hover {
   display: block;
   position: relative;
   top: 25px;
-  left: 25px;
-
+  left: 10px;
   z-index: 1;
 
   -webkit-user-select: none;
