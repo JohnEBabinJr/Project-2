@@ -3,6 +3,10 @@ span {
   font-weight: 700;
 }
 
+#about {
+  line-height: 30px;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
