@@ -3,7 +3,7 @@
         <div class="col">
 
             <h4>Add New Bathroom</h4>
-            <form class="create-form" action="/api/Jons" method="POST">
+            <form class="create-form">
                 <div class="form-group">
                     <i class="material-icons prefix">account_circle</i><label for="locationName">Location of
                         Bathroom:</label>
@@ -41,7 +41,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="fChanging check" type="checkbox" name="fChanging">
+                        <input class="fChanging check" type="checkbox" value="false" name="fChanging">
                         <span class="lever"></span>
 
                     </label>
@@ -52,7 +52,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="mChanging check" type="checkbox" name="mChanging">
+                        <input class="mChanging check" type="checkbox" value="false" name="mChanging">
                         <span class="lever"></span>
 
                     </label>
@@ -63,7 +63,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="handicap check" type="checkbox" name="handicap">
+                        <input class="handicap check" type="checkbox" value="false" name="handicap">
                         <span class="lever"></span>
 
                     </label>
@@ -74,7 +74,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="itsLit check" type="checkbox" name="itsLit">
+                        <input class="itsLit check" type="checkbox" value="false" name="itsLit">
                         <span class="lever"></span>
 
                     </label>
@@ -84,7 +84,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="multiPly check" type="checkbox" name="multiPly">
+                        <input class="multiPly check" type="checkbox" value="false" name="multiPly">
                         <span class="lever"></span>
 
                     </label>
@@ -95,7 +95,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="airDryer check" type="checkbox" name="airDryer">
+                        <input class="airDryer check" type="checkbox" value="false" name="airDryer">
                         <span class="lever"></span>
 
                     </label>
@@ -108,7 +108,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="alwaysOpen check" type="checkbox" name="alwaysOpen">
+                        <input class="alwaysOpen check" type="checkbox" value="false" name="alwaysOpen">
                         <span class="lever"></span>
 
                     </label>
@@ -116,12 +116,23 @@
 
                 </div>
 
+                <div class="switch">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label>
+
+                        <input class="feminineProducts check" type="checkbox" value="false" name="feminineProducts">
+                        <span class="lever"></span>
+
+                    </label>
+                    Feminine Products
+
+                </div>
 
                 <div class="switch">
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="sharps check" type="checkbox" name="sharps">
+                        <input class="sharps check" type="checkbox" value="false" name="sharps">
                         <span class="lever"></span>
 
                     </label>
@@ -129,33 +140,21 @@
 
                 </div>
 
-                <div class="checkbox">
+                {{!-- <div class="checkbox">
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="cleanlinessRating" type="checkbox" name="cleanlinessRating">
+                        <input class="cleanlinessRating" type="checkbox" value="false" name="cleanlinessRating">
                         <span class="lever"></span>
 
                     </label>
                     Cleanliness Rating
 
-                </div>
-
-
-                {{!-- <div class="switch" id="checkbox">
-                    <label>
-                        <input class="test" type="checkbox" data-toggle="toggle">
-                        <span class="lever"></span>
-
-                    </label>
                 </div> --}}
-
-
-
 
                 <div class="description" style="margin-top: 30px;">
                     <i class="material-icons prefix">account_circle</i><label for="description">Description</label>
-                    <input type="text" name="description" />
+                    <input type="text" id="description" name="description" />
                 </div>
 
 
@@ -181,6 +180,19 @@
         var city = $("#city").val();
         var state = $("#state").val();
         var zipCode = $("#zipcode").val();
+        var genderNeutral = $(".genderNeutral").val();
+        var fChanging = $(".fChanging").val();
+        var mChanging = $(".mChanging").val();
+        var handicap = $(".handicap").val();
+        var itsLit = $(".itsLit").val();
+        var multiPly = $(".multiPly").val();
+        var airDryer = $(".airDryer").val();
+        var alwaysOpen = $(".alwaysOpen").val();
+        var feminineProducts = $(".feminineProducts").val();
+        var sharps = $(".sharps").val();
+        var description = $("#description").val();
+        var rating = $("#rating").val();
+        var cleanlinessRating = $(".cleanlinessRating").val();
 
         var querycall = "http://dev.virtualearth.net/REST/v1/Locations/US/" + state + "/" + zipCode + "/" + city + "/" + addressLine + "?maxResults=1&key=Ao1-VCDcAKZs7Cmk5770BFTlR8_gSj_IuvYegQKIRn_b8uBJlKMqfZqRt-viiNPw";
         $.ajax({
@@ -192,9 +204,22 @@
             $.ajax("/api/Jons", {
                 type: "POST",
                 data: {
+                    address: address,
                     long: coordinates[1],
                     lat: coordinates[0],
-                    address: address
+                    description: description,
+                    rating: rating,
+                    cleanlinessRating: cleanlinessRating,
+                    genderNeutral: genderNeutral,
+                    handicap: handicap,
+                    multiPly: multiPly,
+                    alwaysOpen: alwaysOpen,
+                    mChanging: mChanging,
+                    fChanging: fChanging,
+                    airDryer: airDryer,
+                    itsLit: itsLit,
+                    feminineProducts: feminineProducts,
+                    sharps: sharps
                 }
             }).then(function () {
                 console.log("Posted to API");
