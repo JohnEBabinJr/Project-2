@@ -188,27 +188,17 @@
             method: "GET"
         }).then(function (response) {
             var coordinates = response.resourceSets[0].resources[0].point.coordinates;
+            var address = addressLine + " " + city + " " + state + ", " + zipCode;
             $.ajax("/api/Jons", {
                 type: "POST",
                 data: {
                     long: coordinates[1],
-                    lat: coordinates[0]
+                    lat: coordinates[0],
+                    address: address
                 }
             }).then(function () {
                 console.log("Posted to API");
             });
-        });
-
-        var address = addressLine + " " + city + " " + state + ", " + zipCode;
-        console.log(address);
-
-        $.ajax("/api/Jons", {
-            type: "POST",
-            data: {
-                address: address
-            }
-        }).then(function () {
-            console.log("Posted to API");
         });
     });
 </script>
