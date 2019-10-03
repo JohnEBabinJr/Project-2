@@ -178,7 +178,6 @@
                     <label for="star1">1</label>
                     <input class="m-6" type="radio" id="star1" name="rating" value="1" />
                     <label for="star2">2</label>
-
                     <input class="m-6" type="radio" id="star2" name="rating" value="2" />
                     <label for="star3">3</label>
                     <input class="m-6" type="radio" id="star3" name="rating" value="3" />
@@ -227,14 +226,14 @@
                 <div class="col-md-8">
                     <div class="description">
                         <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="4" placeholder="Enter a description for the bathroom. This will help others
+                        <textarea class="form-control rounded-0 " id="description" rows="4" placeholder="Enter a description for the bathroom. This will help others
                     easily identify the bathroom."></textarea>
                     </div>
                 </div>
             </div>
         </div>
 
-        <button type=" submit" class="btn btn-primary mb-5">Submit</button>
+        <button type=" submit" class="btn btn-primary mb-5 submitbtn">Submit</button>
 
     </form>
 </div>
@@ -251,6 +250,7 @@
     });
 
     $(".submitbtn").on("click", function () {
+        var locationName = $("#locationName").val();
         var addressLine = $("#streetaddress").val();
         var city = $("#city").val();
         var state = $("#state").val();
@@ -266,19 +266,23 @@
         var feminineProducts = $(".feminineProducts").val();
         var sharps = $(".sharps").val();
         var description = $("#description").val();
-        var rating = $("#rating").val();
+        var rating = $(".rating").val();
         var cleanlinessRating = $(".cleanlinessRating").val();
 
+
         var querycall = "http://dev.virtualearth.net/REST/v1/Locations/US/" + state + "/" + zipCode + "/" + city + "/" + addressLine + "?maxResults=1&key=Ao1-VCDcAKZs7Cmk5770BFTlR8_gSj_IuvYegQKIRn_b8uBJlKMqfZqRt-viiNPw";
+
         $.ajax({
             url: querycall,
             method: "GET"
         }).then(function (response) {
             var coordinates = response.resourceSets[0].resources[0].point.coordinates;
             var address = addressLine + " " + city + " " + state + ", " + zipCode;
+            console.log(coordinates);
             $.ajax("/api/Jons", {
                 type: "POST",
                 data: {
+                    locationName: locationName,
                     address: address,
                     long: coordinates[1],
                     lat: coordinates[0],

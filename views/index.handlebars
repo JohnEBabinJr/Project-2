@@ -14,6 +14,34 @@
 
 
 
+
+
+  function getGeoJson(geo) {
+    var arr = [];
+    for (var i = 0; i < response.length; i++) {
+      var geo = {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [response[i].long, response[i].lat]
+        },
+        properties: {
+          title: response[i].locationName,
+          description: response[i].locationName,
+          link: "/Jon/" + response[i].id,
+          id: response[i].id
+        },
+      };
+      arr.push(geo);
+      console.log(arr);
+    }
+
+    var geoJson = {
+      type: 'FeatureCollection',
+      features: [arr],
+    };
+  }
+
   map.on('load', function () {
     // Add a layer showing the places.
     $.ajax({
@@ -21,51 +49,37 @@
       type: "GET"
     }).then(function (response) {
       console.log(response);
-
-      var geojson = {
+      var arr = [];
+      for (var i = 0; i < response.length; i++) {
+        var geo = {
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [response[i].long, response[i].lat]
+          },
+          properties: {
+            title: response[i].locationName,
+            description: response[i].locationName,
+            link: "/Jon/" + response[i].id,
+            id: response[i].id
+          },
+        };
+        arr.push(geo);
+      }
+      var geoJson = {
         type: 'FeatureCollection',
-        features: [{
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-121.4940, 38.5778]
-          },
-          properties: {
-            title: 'Mapbox',
-            description: 'Washington, D.C.'
-          }
-        },
-        {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-121.4942, 38.5776]
-          },
-          properties: {
-            title: 'Mapbox',
-            description: 'San Francisco, California'
-          }
-        }]
+        features: [arr],
       };
 
-      geojson.features.forEach(function (marker) {
-
-        // create a HTML element for each feature
-        var el = document.createElement('div');
-        el.className = 'marker';
-
-        // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el)
-          .setLngLat(marker.geometry.coordinates)
-          .addTo(map);
+      console.log(geoJson);
+      var myLayer = L.mapbox.featureLayer().addTo(map);
+      myLayer.on('layeradd', function (e) {
+        var marker = e.layer,
+          feature = marker.feature;
+        marker.setIcon(L.icon(feature.properties.icon));
       });
-
-
-      new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-          .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
-        .addTo(map);
+      myLayer.setGeoJSON(geojson);
+      mapOne.scrollWheelZoom.disable();
 
       map.addLayer({
         "id": "places",
@@ -77,12 +91,12 @@
             "features": [{
               "type": "Feature",
               "properties": {
-                "description": response[i].description,
-                "icon": "dot"
+                "description": "Sacramento, California",
+                "icon": "theater"
               },
               "geometry": {
                 "type": "Point",
-                "coordinates": [(response[i].long), (response[i].lat)]
+                "coordinates": [-121.4942, 38.5778]
               }
             }]
           }
@@ -92,8 +106,11 @@
           "icon-allow-overlap": true
         }
       })
+
+
     })
   });
+
 
 
 
@@ -155,7 +172,6 @@
       latitude: 38.8500
     } // Coordinates of Sacramento
   });
-
 
 
   // Add the geocoder to the map
