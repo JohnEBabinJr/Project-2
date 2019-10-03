@@ -7,19 +7,20 @@
                 <div class="form-group">
                     <i class="material-icons prefix">account_circle</i><label for="locationName">Location of
                         Bathroom:</label>
-                    <input type="text" id="location" />
+                    <input type="text" id="locationName" name="locationName" />
 
-                    <i class="material-icons prefix">account_circle</i> <label for="address">Street Address:</label>
-                    <input type="text" class="streetaddress" id="location" />
+                    <i class="material-icons prefix">account_circle</i> <label for="streetaddress">Street
+                        Address:</label>
+                    <input type="text" id="streetaddress" />
 
-                    <i class="material-icons prefix">account_circle</i> <label for="address">City:</label>
-                    <input type="text" class="city" id="location" />
+                    <i class="material-icons prefix">account_circle</i> <label for="city">City:</label>
+                    <input type="text" id="city" />
 
-                    <i class="material-icons prefix">account_circle</i> <label for="address">State:</label>
-                    <input type="text" class="state" id="location" />
+                    <i class="material-icons prefix">account_circle</i> <label for="state">State:</label>
+                    <input type="text" id="state" />
 
-                    <i class="material-icons prefix">account_circle</i> <label for="address">Zip Code:</label>
-                    <input type="text" class="zipcode" id="location" />
+                    <i class="material-icons prefix">account_circle</i> <label for="zipcode">Zip Code:</label>
+                    <input type=" number" id="zipcode" />
 
                 </div>
 
@@ -40,7 +41,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class=" fChanging check" type="checkbox" name="fChanging">
+                        <input class="fChanging check" type="checkbox" name="fChanging">
                         <span class="lever"></span>
 
                     </label>
@@ -120,7 +121,7 @@
                     <i class="material-icons prefix">account_circle</i>
                     <label>
 
-                        <input class="sharps check" type="checkbox">
+                        <input class="sharps check" type="checkbox" name="sharps">
                         <span class="lever"></span>
 
                     </label>
@@ -174,11 +175,12 @@
             $(this).val('false');
         }
     });
-    $(".submitbtn").on("click", function){
-        var addressLine = $(".streetaddress").val();
-        var city = $(".city").val();
-        var state = $(".state").val();
-        var zipCode = $(".zipcode").val();
+
+    $(".submitbtn").on("click", function () {
+        var addressLine = $("#streetaddress").val();
+        var city = $("#city").val();
+        var state = $("#state").val();
+        var zipCode = $("#zipcode").val();
 
         var querycall = "http://dev.virtualearth.net/REST/v1/Locations/US/" + state + "/" + zipCode + "/" + city + "/" + addressLine + "?maxResults=1&key=Ao1-VCDcAKZs7Cmk5770BFTlR8_gSj_IuvYegQKIRn_b8uBJlKMqfZqRt-viiNPw";
         $.ajax({
@@ -188,20 +190,25 @@
             var coordinates = response.resourceSets[0].resources[0].point.coordinates;
             $.ajax("/api/Jons", {
                 type: "POST",
-                data: coordinates
+                data: {
+                    long: coordinates[1],
+                    lat: coordinates[0]
+                }
             }).then(function () {
                 console.log("Posted to API");
             });
         });
 
-        var address = addressLine + "" + city + "" + state + "" + zipCode;
+        var address = addressLine + " " + city + " " + state + ", " + zipCode;
+        console.log(address);
+
         $.ajax("/api/Jons", {
             type: "POST",
-            data: address
+            data: {
+                address: address
+            }
         }).then(function () {
             console.log("Posted to API");
         });
     });
-    };
-
 </script>
