@@ -3,45 +3,48 @@
     <div class="col-2">
     </div>
     <div class="col-6">
-      <h4>{{Jon.address}}</h4>
+
       <div class="card" style="max-width: 500px; min-width: 350px;">
 
         <div class="card-body">
-          <h5 class="card-title">{{Jon.locationName}}</h5>
-          <p class="card-text">{{Jon.description}}</p>
+          <h5 class="card-title text-center">{{Jon.locationName}}</h5>
+          <h6 class="text-center">{{Jon.address}}</h6>
+          <p class="card-text text-center"><em>{{Jon.description}}</em></p>
           <ul>
             <li>
-              <p>General Rating:</p>{{Jon.rating}}
+              <p><strong>General Rating:</strong>{{Jon.rating}}</p>
             </li>
             <li>
-              <p>Gender Neutral:</p>{{Jon.genderNeutral}}
+              <p><strong>Gender Neutral:</strong>{{Jon.genderNeutral}}<p></p>
             </li>
             <li>
-              <p>Handicapped:</p>{{Jon.handicap}}
+              <p><strong>Handicapped:</strong>{{Jon.handicap}}</p>
             </li>
             <li>
-              <p>Male Changing Station:</p>{{Jon.mChanging}}
+              <p><strong>Male Changing Station:</strong>{{Jon.mChanging}}</p>
             </li>
             <li>
-              <p>Female Changing Station:</p>{{Jon.fChanging}}
+              <p><strong>Female Changing Station:</strong>{{Jon.fChanging}}</p>
             </li>
             <li>
-              <p>Air Dryer:</p>{{Jon.airDryer}}
+              <p><strong>Air Dryer:</strong>{{Jon.airDryer}}</p>
             </li>
             <li>
-              <p>Well Lit:</p>{{Jon.itsLit}}
+              <p><strong>Well Lit:</strong>{{Jon.itsLit}}</p>
             </li>
             <li>
-              <p>Feminine Products:</p>{{Jon.feminineProduct}}
+              <p><strong>Feminine Products:</strong>{{Jon.feminineProducts}}</p>
             </li>
             <li>
-              <p>Sharps Container:</p>{{Jon.sharps}}
+              <p><strong>Sharps Container:</strong>{{Jon.sharps}}</p>
             </li>
 
           </ul>
 
 
-          <a href="/" class="btn btn-primary">Go Back</a>
+          <a href="/" class="btn btn-primary">Back to Map</a>
+
+          <a href="/submit" class="btn btn-primary">Submit Bathroom</a>
         </div>
       </div>
 
