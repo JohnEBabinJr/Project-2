@@ -1,6 +1,6 @@
 <div class="container">
     <h4 class="mb-5">Add a Bathroom</h4>
-    <form class="create-form" action="/thankyou">
+    <form class="create-form" action="/thankyou" method="POST">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="locationName">Location of Bathroom</label>
@@ -173,7 +173,7 @@
 
             <div class="col-md-4">
 
-                <fieldset class="cleanlinessRate">
+                <fieldset id="cleanlinessRate">
                     Cleanliness Rating<br>
                     <label for="star1">1</label>
                     <input class="m-6" type="radio" id="star1" name="cleanlinessrating" value="1"
@@ -197,7 +197,7 @@
 
             <div class="col-md-4">
 
-                <fieldset class="rate">
+                <fieldset id="rate">
                     General Rating<br>
 
                     <label for="star1">1</label>

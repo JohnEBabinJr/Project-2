@@ -83,7 +83,7 @@
       var pop = new mapboxgl.Popup()
         .setLngLat(marker.geometry.coordinates)
         .setMaxWidth("200px")
-        .setHTML('<h5>' + marker.properties.title + '</h5><p>' + marker.properties.message + "<p>")
+        .setHTML('<h5>' + marker.properties.title + '</h5><p>' + marker.properties.message + "</p><a href=" + marker.properties.link + "> Link </a>")
         .addTo(map);
 
       var el = document.createElement('div');
