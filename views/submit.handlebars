@@ -4,7 +4,8 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="locationName">Location of Bathroom</label>
-                <input type="text" class="form-control" id="locationName" placeholder="e.g. Park Place">
+                <input type="text" name="location" required class="form-control" id="locationName"
+                    placeholder="e.g. Park Place">
             </div>
             <div class="form-group col-md-6">
                 <label for="streetaddress">Street Address</label>
@@ -173,53 +174,26 @@
 
             <div class="col-md-4">
 
-                <fieldset id="cleanlinessRate">
-                    Cleanliness Rating<br>
-                    <label for="star1">1</label>
-                    <input class="m-6" type="radio" id="star1" name="cleanlinessrating" value="1"
-                        class="cleanlinessRating" />
-                    <label for="star2">2</label>
-                    <input class="m-6" type="radio" id="star2" name="cleanlinessrating" value="2"
-                        class="cleanlinessRating" />
-                    <label for="star3">3</label>
-                    <input class="m-6" type="radio" id="star3" name="cleanlinessrating" value="3"
-                        class="cleanlinessRating" />
-                    <label for="star4">4</label>
-                    <input class="m-6" type="radio" id="star4" name="cleanlinessrating" value="4"
-                        class="cleanlinessRating" />
-
-                    <label for="star5">5</label>
-                    <input class="m-6" type="radio" id="star5" name="cleanlinessrating" value="5"
-                        class="cleanlinessRating" />
-
-                </fieldset>
+                <select id="cleanlinessrating">
+                    <option value="" disabled selected>Cleanliness Rating </option>
+                    <option value="1">1 </option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 </option>
+                </select>
             </div>
 
             <div class="col-md-4">
 
-                <fieldset id="rate">
-                    General Rating<br>
-
-                    <label for="star1">1</label>
-                    <input class="m-6" type="radio" id="star1" name="rating" value="1" class="rating" />
-
-                    <label for="star2">2</label>
-                    <input class="m-6" type="radio" id="star2" name="rating" value="2" class="rating" />
-
-
-
-                    <label for="star3">3</label>
-                    <input class="m-6" type="radio" id="star3" name="rating" value="3" class="rating" />
-
-                    <label for="star4">4</label>
-                    <input class="m-6" type="radio" id="star4" name="rating" value="4" class="rating" />
-
-                    <label for="star5">5</label>
-                    <input class="m-6" type="radio" id="star5" name="rating" value="5" class="rating" />
-
-
-
-                </fieldset>
+                <select id="rating">
+                    <option value="" disabled selected>General Rating </option>
+                    <option value="1">1 </option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 </option>
+                </select>
             </div>
         </div>
 
@@ -238,7 +212,7 @@
             </div>
         </div>
 
-        <button type=" submit" class="btn btn-primary mb-5 submitbtn">Submit</button>
+        <button type=" submit" class="btn btn-primary mb-5 submitbtn"><a href="/thankyou">Submit</a></button>
 
     </form>
 </div>
@@ -255,8 +229,8 @@
 
     $(".submitbtn").on("click", function (event) {
         event.preventDefault();
-        var rating;
-        var cleanlinessRating;
+        var rating = $("#rating").val();;
+        var cleanlinessRating = $("#cleanlinessrating").val();
         var locationName = $("#locationName").val();
         var addressLine = $("#streetaddress").val();
         var city = $("#city").val();
@@ -286,7 +260,13 @@
         console.log(cleanlinessRating);
         console.log(rating);
 
-        var querycall = "http://dev.virtualearth.net/REST/v1/Locations/US/" + state + "/" + zipCode + "/" + city + "/" + addressLine + "?maxResults=1&key=Ao1-VCDcAKZs7Cmk5770BFTlR8_gSj_IuvYegQKIRn_b8uBJlKMqfZqRt-viiNPw";
+        var querycall = "https://dev.virtualearth.net/REST/v1/Locations/US/" + state + "/" + zipCode + "/" + city + "/" + addressLine + "?maxResults=1&key=Ao1-VCDcAKZs7Cmk5770BFTlR8_gSj_IuvYegQKIRn_b8uBJlKMqfZqRt-viiNPw";
+
+
+        if ($("#locationName").val() == "" || $("#streetaddress").val() == "" || $("#city").val() == "" || $("#state").val() == "") {
+            alert("These fields are required.");
+            return;
+        }
 
         $.ajax({
             url: querycall,
@@ -316,6 +296,9 @@
                     itsLit: itsLit,
                     feminineProducts: feminineProducts,
                     sharps: sharps
+                },
+                success: function (json) {
+                    window.location.href = "/thankyou";
                 }
             }).then(function () {
                 console.log("Posted to API");
