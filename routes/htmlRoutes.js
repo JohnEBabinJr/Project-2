@@ -22,6 +22,18 @@ module.exports = function (app) {
     res.render("about");
   });
 
+  app.get("/thankyou", function (req, res) {
+
+    res.render("thankyou");
+  });
+
+  // Testing HTML page
+  app.get("/bathrooms", function (req, res) {
+
+    res.render("bathrooms");
+  });
+
+
   // Load individual
   app.get("/Jon/:id", function (req, res) {
     db.Jon.findOne({
