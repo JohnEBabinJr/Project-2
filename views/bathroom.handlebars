@@ -1,17 +1,48 @@
-<h1>{{Jon.locationName}}</h1>
-<h5>{{Jon.address}}</h5>
-<li>
-  <ul>{{Jon.rating}}</ul>
-  <ul>{{Jon.cleanlinessRating}}</ul>
-  <ul>{{Jon.genderNeutral}}</ul>
-  <ul>{{Jon.handicap}}</ul>
-  <ul>{{Jon.multiPly}}</ul>
-  <ul>{{Jon.alwaysOpen}}</ul>
-  <ul>{{Jon.mChanging}}</ul>
-  <ul>{{Jon.fChanging}}</ul>
-  <ul>{{Jon.airDryer}}</ul>
-  <ul>{{Jon.itsLit}}</ul>
-  <ul>{{Jon.feminineProducts}}</ul>
-  <ul>{{Jon.sharps}}</ul>
-  <ul>{{Jon.description}}</ul>
-</li>
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-6">
+      <h4>{{Jon.address}}</h4>
+      <div class="card" style="max-width: 500px; min-width: 350px;">
+
+        <div class="card-body">
+          <h5 class="card-title">{{Jon.locationName}}</h5>
+          <p class="card-text">{{Jon.description}}</p>
+          <ul>
+            <li>
+              <p>General Rating:</p>{{Jon.rating}}
+            </li>
+            <li>
+              <p>Gender Neutral:</p>{{Jon.genderNeutral}}
+            </li>
+            <li>
+              <p>Handicapped:</p>{{Jon.rating}}
+            </li>
+            <li>
+              <p>Male Changing Station:</p>{{Jon.rating}}
+            </li>
+            <li>
+              <p>Female Changing Station:</p>{{Jon.rating}}
+            </li>
+            <li>
+              <p>Air Dryer:</p>{{Jon.rating}}
+            </li>
+            <li>
+              <p>Well Lit:</p>{{Jon.rating}}
+            </li>
+            <li>
+              <p>Feminine Products:</p>{{Jon.rating}}
+            </li>
+            <li>
+              <p>Sharps Container:</p>{{Jon.rating}}
+            </li>
+
+          </ul>
+
+
+          <a href="/" class="btn btn-primary">Go Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

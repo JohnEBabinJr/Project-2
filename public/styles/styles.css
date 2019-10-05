@@ -3,6 +3,22 @@ span {
   font-weight: 700;
 }
 
+h4 {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 400;
+}
+
+ul,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#about {
+  line-height: 30px;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -12,6 +28,10 @@ span {
   top: 6%;
   bottom: 0;
   width: 100%;
+}
+
+img {
+  object-fit: contain;
 }
 
 input:not([type]),
@@ -85,14 +105,14 @@ a:hover {
   -webkit-touch-callout: none;
 }
 
-#menuToggle span {
+#menuToggle #hamb {
   display: block;
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
   position: relative;
 
-  background: #232323;
+
   border-radius: 3px;
   z-index: 1;
   transform-origin: 4px 0px;
@@ -101,28 +121,28 @@ a:hover {
     opacity 0.55s ease;
 }
 
-#menuToggle span:first-child {
+#menuToggle #hamb:first-child {
   transform-origin: 0% 0%;
 }
 
-#menuToggle span:nth-last-child(2) {
+#menuToggle #hamb:nth-last-child(2) {
   transform-origin: 0% 100%;
 }
 
-#menuToggle input:checked~span {
+#menuToggle input:checked~#hamb {
   opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
+  transform: rotate(90deg) translate(-2px, -1px);
+
 }
 
-#menuToggle input:checked~span:nth-last-child(3) {
+#menuToggle input:checked~#hamb:nth-last-child(3) {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
 
 
-#menuToggle input:checked~span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(0, -1px);
+#menuToggle input:checked~#hamb:nth-last-child(2) {
+  transform: rotate(-90deg) translate(0, -1px);
 }
 
 #menu {
