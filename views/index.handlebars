@@ -1,8 +1,6 @@
 <div id='map'></div>
 
 <script>
-
-
   mapboxgl.accessToken = 'pk.eyJ1IjoiZnh0emhvdSIsImEiOiJjazEwMTJncDgwMHp1M3BtdjkxZ3FicDY2In0.8rLpErDOJ5DGEOsiybn8Og';
 
   var map = new mapboxgl.Map({
@@ -11,10 +9,6 @@
     center: [-121.4942, 38.5778], // Starting position [lng, lat]
     zoom: 12, // Starting zoom level
   });
-
-
-
-
 
   function getGeoJson(geo) {
 
@@ -41,89 +35,67 @@
       features: [arr],
     };
   }
+
   var arr = [];
-  map.on('load', function () {
-    // Add a layer showing the places.
-    $.ajax({
-      url: "api/Jons",
-      type: "GET"
-    }).then(function (response) {
-      console.log(response);
-      var arr = [];
-      for (var i = 0; i < response.length; i++) {
-        var geo = {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [response[i].long, response[i].lat]
-          },
-          properties: {
-            title: response[i].locationName,
-            description: response[i].locationName,
-            link: "/Jon/" + response[i].id,
-            id: response[i].id,
-            icon: "theater",
-          },
-        };
-        arr.push(geo);
-      }
-      var geoJson = {
-        type: 'FeatureCollection',
-        features: [arr],
-      };
+  var geoJson;
 
-      console.log(geoJson);
-      var myLayer = L.mapbox.featureLayer().addTo(map);
-
-      myLayer.on('layeradd', function (e) {
-        var marker = e.layer,
-          feature = marker.feature;
-        //marker.setIcon(L.icon(feature.properties.icon));
-      });
-      myLayer.setGeoJSON(geoJson);
-      mapOne.scrollWheelZoom.disable();
-
-
-      map.addSource('single-point', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: [arr]
-        }
-      });
-
-      map.addLayer({
-        "id": "places",
-        "type": "symbol",
-        "source": {
-          "type": "geojson",
-          "data": {
-            "type": "FeatureCollection",
-            "features": [{
-              "type": "Feature",
-              "properties": {
-                "description": "Sacramento, California",
-                "icon": "theater"
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [-121.4942, 38.5778]
-              }
-            }]
-          }
+  $.ajax({
+    url: "api/Jons",
+    type: "GET"
+  }).then(function (response) {
+    console.log(response);
+    var arr = [];
+    for (var i = 0; i < response.length; i++) {
+      var geo = {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [response[i].long, response[i].lat]
         },
-        "layout": {
-          "icon-image": "{icon}-15",
-          "icon-allow-overlap": true
-        }
-      })
-
-
-    })
+        properties: {
+          title: response[i].locationName,
+          address: response[i].address,
+          message: response[i].description,
+          link: "/Jon/" + response[i].id,
+          id: response[i].id,
+          icon: "circle",
+          iconSize: [30, 30]
+        },
+      };
+      //var marker = new mapboxgl.Marker() // Initialize a new marker
+      //  .setLngLat([response[i].long, response[i].lat]) // Marker [lng, lat] coordinates
+      //  .addTo(map); // Add the marker to the map
+      arr.push(geo);
+    }
+    geoJson = {
+      type: 'FeatureCollection',
+      features: arr,
+    };
   });
 
+  map.on('load', function () {
+    // Add a layer showing the places.
+    console.log(geoJson);
 
+    geoJson.features.forEach(function (marker) {
+      console.log(marker);
 
+      var pop = new mapboxgl.Popup()
+        .setLngLat(marker.geometry.coordinates)
+        .setMaxWidth("200px")
+        .setHTML('<h5>' + marker.properties.title + '</h5><p>' + marker.properties.message + "<p>")
+        .addTo(map);
+
+      var el = document.createElement('div');
+      el.id = 'marker';
+
+      // add marker to map
+      marker = new mapboxgl.Marker()
+        .setLngLat(marker.geometry.coordinates)
+        .setPopup(pop)
+        .addTo(map);
+    });
+  });
 
   var popup = new mapboxgl.Popup({
     closeOnClick: true
@@ -132,46 +104,6 @@
     .setMaxWidth("200px")
     .setText("Our goal is to help everyone find a safe space to handle life's little emergencies. Use the map to find a bathroom near you.")
     .addTo(map);
-
-
-
-
-  // When a click event occurs on a feature in the places layer, open a popup at the
-  // location of the feature, with description HTML from its properties.
-  map.on('click', 'places', function (e) {
-    var coordinates = e.features[0].geometry.coordinates.slice();
-    var description = e.features[0].properties.description;
-
-    // Ensure that if the map is zoomed out such that multiple
-    // copies of the feature are visible, the popup appears
-    // over the copy being pointed to.
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-      coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    }
-
-    new mapboxgl.Popup()
-      .setLngLat(coordinates)
-      .setHTML(description)
-      .addTo(map);
-  });
-
-
-  // Change the cursor to a pointer when the mouse is over the places layer.
-  map.on('mouseenter', 'places', function () {
-    map.getCanvas().style.cursor = 'pointer';
-  });
-
-
-  // Change it back to a pointer when it leaves.
-  map.on('mouseleave', 'places', function () {
-    map.getCanvas().style.cursor = '';
-  });
-
-
-  //var marker = new mapboxgl.Marker() // Initialize a new marker
-  //.setLngLat([-121.4942, 38.5778]) // Marker [lng, lat] coordinates
-  //.addTo(map); // Add the marker to the map
-
 
   var geocoder = new MapboxGeocoder({ // Initialize the geocoder
     accessToken: mapboxgl.accessToken, // Set the access token
@@ -185,25 +117,15 @@
     } // Coordinates of Sacramento
   });
 
-
   // Add the geocoder to the map
   map.addControl(geocoder);
 
-  // After the map style has loaded on the page,
-  // add a source layer and default styling for a single point
-  map.on('load', function () {
-    map.addSource('single-point', {
-      type: 'geojson',
-      data: {
-        type: 'FeatureCollection',
-        features: [arr]
-      }
-    });
-
-    geocoder.on('result', function (ev) {
-      map.getSource('single-point').setData(ev.result.geometry);
-    });
-  });
+  map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+      enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  }));
 </script>
 
 {{!-- <div class="container-fluid bg bg-primary">
