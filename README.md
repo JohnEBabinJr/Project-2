@@ -59,6 +59,9 @@ Code quality and ease of sharing is maintained via usage of a schema.sql and Tra
 ## Contact Us
 
 -Carolyn Tan: https://github.com/lyntan
+
 -John Babin: https://github.com/JohnEBabinJr
+
 -Connor Paxton: https://github.com/hippopattymus/
+
 -Fiona Zhou: https://github.com/fxtzhou
