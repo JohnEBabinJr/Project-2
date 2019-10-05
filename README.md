@@ -48,7 +48,7 @@ If the filters that we provided are not sufficient, we have also included a text
 
 ## How was our app built?
 
-The app is hosted by Heroku with using GET and POST routes to add new data. Our front end developer designed the site layout using Bootstrap and Materialize in order to be mobile and desktop friendly. Server-side templating made use of Handlebars.
+The app is hosted by Heroku with using GET and POST routes to add new data. Our front end developer designed the site layout using Bootstrap in order to be mobile and desktop friendly. Server-side templating made use of Handlebars.
 
 The new technology that we used was Mapbox which we all researched in order to use it for our project. We used it for displaying map and data inputs.
 
