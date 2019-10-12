@@ -1,6 +1,7 @@
 #toilet {
-  position: fixed;
+  z-index: 100;
   bottom: 775px;
+  position: absolute;
 }
 
 span {
@@ -38,6 +39,7 @@ li {
   top: 60px;
   bottom: 0;
   width: 100%;
+  z-index: 1;
 }
 
 #logo {
