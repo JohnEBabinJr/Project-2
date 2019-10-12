@@ -1,9 +1,3 @@
-#toilet {
-  z-index: 100;
-  bottom: 775px;
-  position: absolute;
-}
-
 span {
   font-family: "PT Sans Narrow", sans-serif;
   font-weight: 700;
@@ -35,11 +29,12 @@ li {
 }
 
 #map {
+
   position: absolute;
   top: 60px;
   bottom: 0;
   width: 100%;
-  z-index: 1;
+
 }
 
 #logo {
@@ -47,7 +42,9 @@ li {
   font-weight: 400;
   color: white;
   text-align: center;
-  margin: 5px;
+  padding-top: 5px;
+
+  display: inline;
 }
 
 img {
@@ -124,8 +121,7 @@ a:hover {
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
-  position: relative;
-
+  position: absolute;
 
   border-radius: 3px;
   z-index: 1;
