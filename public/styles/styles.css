@@ -68,14 +68,16 @@ textarea.materialize-textarea {
 }
 
 body {
-
-  margin: 0;
+  margin: auto;
   padding: 0;
   color: #232323;
   font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
-
+.container {
+  width: 75%;
+  margin: auto;
+}
 
 a {
   text-decoration: none;
@@ -95,7 +97,6 @@ a:hover {
   top: 25px;
   left: 10px;
   z-index: 1;
-
   -webkit-user-select: none;
   user-select: none;
 }
@@ -176,4 +177,11 @@ a:hover {
 
 #menuToggle input:checked~ul {
   transform: none;
+}
+
+@media (max-width: 670px) {
+  #menuToggle {
+    top: -40px;
+    left: 10px;
+  }
 }
